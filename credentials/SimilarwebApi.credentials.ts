@@ -30,8 +30,8 @@ export class SimilarwebApi implements ICredentialType {
 	authenticate: IAuthenticateGeneric = {
 		type: 'generic',
 		properties: {
-			headers: {
-				'x-api-key': '={{$credentials.apiKey}}',
+			qs: {
+				api_key: '={{$credentials.apiKey}}',
 			},
 		},
 	};
