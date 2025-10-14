@@ -1,6 +1,7 @@
 import type { INodeType, INodeTypeDescription } from 'n8n-workflow';
 import { userDescription } from './resources/user';
 import { companyDescription } from './resources/company';
+import { domainDescription } from './resources/domain';
 
 export class Similarweb implements INodeType {
 	description: INodeTypeDescription = {
@@ -40,11 +41,16 @@ export class Similarweb implements INodeType {
 						name: 'Company',
 						value: 'company',
 					},
+					{
+						name: 'Domain',
+						value: 'domain',
+					},
 				],
 				default: 'user',
 			},
 			...userDescription,
 			...companyDescription,
+			...domainDescription,
 		],
 	};
 }
