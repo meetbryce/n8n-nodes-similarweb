@@ -3,15 +3,15 @@ import { domainDescription } from './resources/domain';
 
 export class Similarweb implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Similarweb',
+		displayName: 'SimilarWeb',
 		name: 'similarweb',
 		icon: { light: 'file:similarweb.svg', dark: 'file:similarweb.dark.svg' },
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
-		description: 'Interact with the Similarweb API',
+		description: 'Interact with the SimilarWeb API',
 		defaults: {
-			name: 'Similarweb',
+			name: 'SimilarWeb',
 		},
 		usableAsTool: true,
 		inputs: ['main'],
