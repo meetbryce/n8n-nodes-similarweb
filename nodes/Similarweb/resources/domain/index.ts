@@ -1,6 +1,7 @@
 import type { INodeProperties } from 'n8n-workflow';
 import { domainLeadEnrichmentDescription } from './leadEnrichment';
 import { domainDemographicsAgeDescription } from './demographicsAge';
+import { domainDemographicsGenderDescription } from './demographicsGender';
 
 const showOnlyForDomain = {
 	resource: ['domain'],
@@ -31,7 +32,7 @@ export const domainDescription: INodeProperties[] = [
 			{
 				name: 'Demographics: Age',
 				value: 'demographicsAge',
-				action: 'Get demographics age data',
+				action: 'Get age data',
 				description: 'Get traffic breakdown by age group (18-24, 25-34, 35-44, 45-54, 55-64, 65+)',
 				routing: {
 					request: {
@@ -40,10 +41,23 @@ export const domainDescription: INodeProperties[] = [
 					},
 				},
 			},
+			{
+				name: 'Demographics: Gender',
+				value: 'demographicsGender',
+				action: 'Get gender data',
+				description: 'Get traffic breakdown by gender (female, male)',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '=/v4/website/{{$parameter.domain}}/demographics_v2/gender?country=us&format=json&start_date={{ DateTime.now().minus({ months: 12 }).toFormat("yyyy-MM") }}&end_date={{ DateTime.now().minus({ months: 1 }).toFormat("yyyy-MM") }}',
+					},
+				},
+			},
 		],
 		default: 'leadEnrichment',
 	},
 	...domainLeadEnrichmentDescription,
 	...domainDemographicsAgeDescription,
+	...domainDemographicsGenderDescription,
 ];
 
