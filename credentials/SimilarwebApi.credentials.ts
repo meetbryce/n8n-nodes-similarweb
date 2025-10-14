@@ -3,12 +3,15 @@ import type {
 	ICredentialTestRequest,
 	ICredentialType,
 	INodeProperties,
+	Icon,
 } from 'n8n-workflow';
 
 export class SimilarwebApi implements ICredentialType {
 	name = 'similarwebApi';
 
 	displayName = 'Similarweb API';
+
+	icon: Icon = 'file:../nodes/Similarweb/similarweb.svg';
 
 	// Link to your community node's README
 	documentationUrl = 'https://github.com/org/-similarweb?tab=readme-ov-file#credentials';

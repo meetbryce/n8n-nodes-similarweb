@@ -1,4 +1,4 @@
-import { NodeConnectionType, type INodeType, type INodeTypeDescription } from 'n8n-workflow';
+import type { INodeType, INodeTypeDescription } from 'n8n-workflow';
 import { userDescription } from './resources/user';
 import { companyDescription } from './resources/company';
 
@@ -15,8 +15,8 @@ export class Similarweb implements INodeType {
 			name: 'Similarweb',
 		},
 		usableAsTool: true,
-		inputs: [NodeConnectionType.Main],
-		outputs: [NodeConnectionType.Main],
+		inputs: ['main'],
+		outputs: ['main'],
 		credentials: [{ name: 'similarwebApi', required: true }],
 		requestDefaults: {
 			baseURL: 'https://api.similarweb.com/',
