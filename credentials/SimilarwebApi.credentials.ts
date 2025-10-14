@@ -39,7 +39,10 @@ export class SimilarwebApi implements ICredentialType {
 	test: ICredentialTestRequest = {
 		request: {
 			baseURL: 'https://api.similarweb.com/',
-			url: '/v1/user',
+			url: '/capabilities',
+			qs: {
+				api_key: '={{$credentials.apiKey}}',
+			},
 		},
 	};
 }
