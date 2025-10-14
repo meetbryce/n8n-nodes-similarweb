@@ -1,6 +1,4 @@
 import type { INodeType, INodeTypeDescription } from 'n8n-workflow';
-import { userDescription } from './resources/user';
-import { companyDescription } from './resources/company';
 import { domainDescription } from './resources/domain';
 
 export class Similarweb implements INodeType {
@@ -34,22 +32,12 @@ export class Similarweb implements INodeType {
 				noDataExpression: true,
 				options: [
 					{
-						name: 'User',
-						value: 'user',
-					},
-					{
-						name: 'Company',
-						value: 'company',
-					},
-					{
 						name: 'Domain',
 						value: 'domain',
 					},
 				],
-				default: 'user',
+				default: 'domain',
 			},
-			...userDescription,
-			...companyDescription,
 			...domainDescription,
 		],
 	};
