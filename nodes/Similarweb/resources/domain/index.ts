@@ -2,6 +2,7 @@ import type { INodeProperties } from 'n8n-workflow';
 import { domainLeadEnrichmentDescription } from './leadEnrichment';
 import { domainDemographicsAgeDescription } from './demographicsAge';
 import { domainDemographicsGenderDescription } from './demographicsGender';
+import { domainAudienceInterestsDescription } from './audienceInterests';
 
 const showOnlyForDomain = {
 	resource: ['domain'],
@@ -53,11 +54,24 @@ export const domainDescription: INodeProperties[] = [
 					},
 				},
 			},
+			{
+				name: 'Related Websites',
+				value: 'audienceInterests',
+				action: 'Get related websites',
+				description: 'Get websites frequently visited by the same visitors (affinity, overlap, AdSense)',
+				routing: {
+					request: {
+						method: 'GET',
+						url: '=/v4/website/{{$parameter.domain}}/total-audience-interests/also-visited?country=us&format=json&start_date={{ DateTime.now().minus({ months: 12 }).toFormat("yyyy-MM") }}&end_date={{ DateTime.now().minus({ months: 1 }).toFormat("yyyy-MM") }}',
+					},
+				},
+			},
 		],
 		default: 'leadEnrichment',
 	},
 	...domainLeadEnrichmentDescription,
 	...domainDemographicsAgeDescription,
 	...domainDemographicsGenderDescription,
+	...domainAudienceInterestsDescription,
 ];
 
